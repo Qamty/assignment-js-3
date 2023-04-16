@@ -1,0 +1,141 @@
+
+
+
+htmlcode
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie Search App</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Movie Search App</h1>
+	<input type="text" id="search-bar" placeholder="Search for movies">
+	<div id="movie-list"></div>
+	<script src="script.js"></script>
+</body>
+</html>
+
+
+    //css code
+
+
+
+
+h1 {
+	text-align: center;
+}
+
+#search-bar {
+	display: block;
+	margin: 20px auto;
+	padding: 10px;
+	font-size: 18px;
+	width: 50%;
+}
+
+#movie-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
+.movie-card {
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+	margin: 10px;
+	padding: 10px;
+	width: 250px;
+}
+
+.movie-title {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.movie-year {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.movie-director {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.movie-actors {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.movie-plot {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+
+  //  JavaScript code
+
+
+const searchBar = document.getElementById('search-bar');
+const movieList = document.getElementById('movie-list');
+
+searchBar.addEventListener('keyup', (e) => {
+	const searchString = e.target.value.toLowerCase();
+
+	// Filter the movies by title, director, or actors
+	const filteredMovies = movies.filter(movie => {
+		return (
+			movie.title.toLowerCase().includes(searchString) ||
+			movie.director.toLowerCase().includes(searchString) ||
+			movie.actors.toLowerCase().includes(searchString)
+		);
+	});
+
+	displayMovies(filteredMovies);
+});
+
+const displayMovies = (movies) => {
+	// Clear previous movie list
+	movieList.innerHTML = '';
+
+	movies.forEach(movie => {
+		// Create the movie card element
+		const movieCard = document.createElement('div');
+		movieCard.classList.add('movie-card');
+
+		// Create the movie title element
+		const movieTitle = document.createElement('div');
+		movieTitle.classList.add('movie-title');
+		movieTitle.textContent = movie.title;
+
+		// Create the movie year element
+		const movieYear = document.createElement('div');
+		movieYear.classList.add('movie-year');
+		movieYear.textContent = `Year: ${movie.year}`;
+
+		// Create the movie director element
+		const movieDirector = document.createElement('div');
+		movieDirector.classList.add('movie-director');
+		movieDirector.textContent = `Director: ${movie.director}`;
+
+		// Create the movie actors element
+		const movieActors = document.createElement('div');
+		movieActors.classList.add('movie-actors');
+		movieActors.textContent = `Actors: ${movie.actors}`;
+
+		// Create the movie plot element
+		const moviePlot = document.createElement('div');
+		moviePlot.classList.add('movie-plot');
+		moviePlot.textContent = `Plot: ${movie.plot}`;
+
+		// Append the movie
+
+
+
